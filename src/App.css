@@ -75,19 +75,64 @@ input {
 --------------------------------------------------- */
 
 .product {
-  background-color: bisque;
   width: calc((100% - 80px) / 5);
   flex-shrink: 0;
   margin-top: 30px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.product > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+.product > div:last-child {
+  margin-top: 5px;
+}
+
+.product-avatar {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.product-avatar img {
+  object-fit: cover;
 }
 
 .product-picture {
-  background-color: lavender;
   height: 350px;
   width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
 }
 .product-picture img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* --------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------OFFER/MAIN-----------------------------------------
+--------------------------------------------------------------------------------- 
+-----------------------------------------------------------------------------*/
+
+.offer .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.offer .container > div:first-child {
+  height: 600px;
+  width: 450px;
+}
+
+.offer .container > div:first-child img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }

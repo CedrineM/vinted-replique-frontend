@@ -1,26 +1,32 @@
-const Product = ({ productInfo }) => {
-  console.log(productInfo.owner.account.avatar.secure_url);
+import { Link } from "react-router-dom";
 
+const Product = ({ productInfo }) => {
   return (
-    <div className="product">
+    <Link to={`/offers/${productInfo._id}`} className="product">
       <div>
-        {productInfo.owner.account.avatar.secure_url && (
-          <img
-            src={productInfo.owner.account.avatar.secure_url}
-            alt={`avatar de ${productInfo.owner.account.username}`}
-          />
+        {productInfo.owner.account.avatar && (
+          <div className="product-avatar">
+            <img
+              className="product-avatar"
+              src={productInfo.owner.account.avatar.secure_url}
+              alt={`avatar de ${productInfo.owner.account.username}`}
+            />
+          </div>
         )}
         <span>{productInfo.owner.account.username}</span>
       </div>
       <div className="product-picture">
-        <img src="" alt="image-produit" />
+        <img
+          src={productInfo.product_image.secure_url}
+          alt={productInfo.product_name}
+        />
       </div>
       <div>
-        <p>Prix</p>
-        <p>Taille</p>
-        <p>Marque</p>
+        <p>{productInfo.product_price} €</p>
+        <p>{productInfo.product_details[1].TAILLE}</p>
+        <p>{productInfo.product_details[0].MARQUE}</p>
       </div>
-    </div>
+    </Link>
   );
 };
 
