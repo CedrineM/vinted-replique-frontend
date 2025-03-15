@@ -3,6 +3,10 @@
 -------------------------------COMMON-----------------------------------------
 --------------------------------------------------------------------------------- 
 -----------------------------------------------------------------------------*/
+body {
+  font-family: "V-inter-reg", Arial, Helvetica, sans-serif;
+}
+
 .container {
   max-width: 1220px;
   width: 100%;
@@ -10,31 +14,105 @@
 }
 
 h1 {
-  font-size: 24px;
+  font-size: 30px;
   margin-bottom: 15px;
+}
+
+h2 {
+  font-size: 24px;
 }
 
 button {
   background-color: #2cb1ba;
   color: #ffffff;
-  border: 0;
+  border: 2px #2cb1ba solid;
   border-radius: 5px;
-  padding: 10px 0;
-  width: 120px;
+  padding: 12px 0;
+  width: 125px;
+  font-weight: 300;
   box-shadow: 3px 3px 10px rgba(44, 176, 186, 0.295);
   cursor: pointer;
 }
 
 button:hover {
   background-color: #32c3ce;
+  border-color: #32c3ce;
 }
 
 input::placeholder {
   opacity: 0.4;
 }
 a {
+  font-weight: bold;
   text-decoration: none;
   color: #2cb1ba;
+}
+
+.button-link {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+/* --------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------HEADER-----------------------------------------
+--------------------------------------------------------------------------------- 
+-----------------------------------------------------------------------------*/
+
+header {
+  max-height: 120px;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  height: inherit;
+}
+
+header img {
+  width: 85px;
+}
+header .filter {
+  max-width: 650px;
+  width: 100%;
+}
+header .filter input {
+  max-width: 600px;
+  width: 100%;
+  height: 40px;
+  background-color: #edf2f2;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+header .filter input:focus-visible {
+  outline: 0;
+}
+
+.disconnect-button {
+  background-color: #c2175b;
+}
+
+.disconnect-button:hover {
+  background-color: #cc3d76;
+}
+.connection-button button {
+  background-color: #ffffff;
+  border: #2cb1ba solid 2px;
+  color: #2cb1ba;
+  font-weight: bold;
+}
+
+.connection-button button:hover {
+  border-color: #32c3ce;
+  color: #32c3ce;
+}
+
+.connection-button button:first-child {
+  margin-right: 15px;
 }
 /* --------------------------------------------------------------------------
 -------------------------------------------------------------------------------
@@ -47,9 +125,12 @@ a {
   height: 500px;
   display: flex;
   align-items: center;
+  position: relative;
 }
 .hero .container > div {
   background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 5px 5px 20px rgba(59, 60, 60, 0.541);
   padding: 0 30px;
   height: 270px;
   width: 400px;
@@ -59,38 +140,14 @@ a {
   justify-content: center;
   align-items: flex-start;
 }
-
-/* --------------------------------------------------------------------------
--------------------------------------------------------------------------------
--------------------------------HEADER-----------------------------------------
---------------------------------------------------------------------------------- 
------------------------------------------------------------------------------*/
-
-header {
-  height: 120px;
+.hero button {
+  width: 60%;
 }
-
-header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-}
-
-header img {
-  width: 85px;
-}
-
-header input {
-  max-width: 620px;
+.hero .tear {
+  position: absolute;
+  bottom: -5px;
   width: 100%;
 }
-
-.button-link {
-  text-decoration: inherit;
-  color: inherit;
-}
-
 /* --------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 -------------------------------HOME/MAIN-----------------------------------------
@@ -114,6 +171,11 @@ header input {
   color: inherit;
 }
 
+.product p {
+  font-size: 13px;
+  font-weight: 300;
+  padding: 3px;
+}
 .product > div:first-child {
   display: flex;
   align-items: center;
@@ -139,6 +201,7 @@ header input {
   width: 100%;
   border-radius: 10px;
   overflow: hidden;
+  background-color: #ffffff;
 }
 .product-picture img {
   width: 100%;
@@ -146,11 +209,22 @@ header input {
   object-fit: cover;
 }
 
+.product:hover .product-picture img {
+  opacity: 0.8;
+}
+
 /* --------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 -------------------------------OFFER/MAIN-----------------------------------------
 --------------------------------------------------------------------------------- 
 -----------------------------------------------------------------------------*/
+
+.offer {
+  background-color: #eaedee;
+  height: calc(100vh - 65px);
+  display: flex;
+  align-items: center;
+}
 
 .offer .container {
   display: flex;
@@ -161,28 +235,97 @@ header input {
 .offer .container > div:first-child {
   height: 600px;
   width: 450px;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .offer .container > div:first-child img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
+.offer .container > div:last-child {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  height: 600px;
+  width: 400px;
+  border-radius: 10px;
+  padding: 40px;
+  gap: 30px;
+}
+
+.offer-detail {
+  display: flex;
+  justify-content: space-between;
+}
+.offer-detail div:first-child p {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #999999;
+}
+
+.offer-detail div:last-child p {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #666666;
+  font-weight: 600;
+}
+
+.offer .separate {
+  color: #999999;
+  opacity: 0.4;
+}
+
+.offer-description h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.offer-description p {
+  color: #666666;
+  line-height: 20px;
+}
+.offer-description > div {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.offer-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.offer-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.offer button {
+  width: 100%;
+}
 /* --------------------------------------------------------------------------
 -------------------------------------------------------------------------------
--------------------------------SIGNUP/MAIN-----------------------------------------
+-------------------------------SIGNUP_LOGIN/MAIN-----------------------------------------
 --------------------------------------------------------------------------------- 
 -----------------------------------------------------------------------------*/
+.signup-login {
+  margin-top: 50px;
+}
 
-.signup .container {
+.signup-login .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.signup .container form {
+.signup-login .container form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -191,7 +334,11 @@ header input {
   width: 300px;
 }
 
-.signup .container form > input {
+.signup-login .container form .errorForm {
+  color: red;
+}
+
+.signup-login .container form > input {
   width: 270px;
   height: 40px;
   padding: 5px;
@@ -199,7 +346,7 @@ header input {
   border-bottom: rgba(44, 176, 186, 0.5) 1px solid;
 }
 
-.signup .container form > div {
+.signup-login .container form > div {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -209,26 +356,30 @@ header input {
   width: 270px;
 }
 
-.signup .container form > div div {
+.signup-login .container form > div div {
   display: flex;
   align-items: center;
   gap: 15px;
   margin-top: 20px;
 }
 
-.signup .container form > div div input {
+.signup-login .container form > div div input {
   transform: scale(2);
   cursor: pointer;
 }
 
-.signup p {
+.signup-login p {
   color: #999999;
   font-size: 12px;
   line-height: 16px;
 }
 
-.signup .container form button {
+.signup-login .container form button {
   width: 90%;
   padding: 15px;
   margin: 20px 0;
+}
+
+.link-signup-login {
+  font-size: 14px;
 }

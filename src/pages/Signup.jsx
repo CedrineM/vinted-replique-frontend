@@ -1,16 +1,17 @@
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
-import Cookies from "js-cookie";
 
-const Signup = () => {
+const Signup = (setConnect) => {
   const [formData, setFormData] = useState({
     email: "",
     username: "",
     password: "",
     newsletter: false,
   });
+  const [errorMessage, setErrorMessage] = useState("");
 
+  const navigate = useNavigate();
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
@@ -29,21 +30,28 @@ const Signup = () => {
         "https://lereacteur-vinted-api.herokuapp.com/user/signup",
         formData
       );
-      Cookies.set("token", response.data.token);
-      console.log("Form data submitted successfully:", response.data);
-      setFormData({
-        email: "",
-        username: "",
-        password: "",
-        newsletter: false,
-      });
+
+      if (response.data.token) {
+        // console.log("Form data submitted successfully:", response.data);
+        setConnect(response.data.token);
+        setFormData({
+          email: "",
+          username: "",
+          password: "",
+          newsletter: false,
+        });
+        navigate("/");
+      }
     } catch (error) {
-      console.log("Error submitting form data:", response.error);
+      // console.log("Error submitting form data:", error.response);
+      if (error.response.status === 409) {
+        setErrorMessage("Un compte est déjà associé à cette email");
+      }
     }
   };
 
   return (
-    <main className="signup">
+    <main className="signup-login">
       <div className="container">
         <h1>S'inscrire</h1>
         <form onSubmit={handleSubmit}>
@@ -68,6 +76,7 @@ const Signup = () => {
             onChange={handleChange}
             value={formData.password}
           />
+          {errorMessage && <p className="errorForm">{errorMessage}</p>}
           <div>
             <div>
               <input
@@ -86,7 +95,9 @@ const Signup = () => {
           </div>
           <button type="submit">S'inscrire</button>
         </form>
-        <Link to={"/login"}>Tu as déjà un compte ? Connecte-toi ! </Link>
+        <Link className="link-signup-login" to={"/login"}>
+          Tu as déjà un compte ? Connecte-toi !{" "}
+        </Link>
       </div>
     </main>
   );

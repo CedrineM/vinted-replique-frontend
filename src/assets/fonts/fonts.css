@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "V-inter-reg"; /* <== On donne un nom unique */
+  src: url("./V-inter-reg/V-Inter-Regular-375.eot") format("embedded-opentype"),
+    /* <== On donne l'emplacement du fichier de police et on précise le format pour être sûr que le navigateur ne se trompe pas en le devinant à partir de l'extension du fichier */
+      url("./V-inter-reg/V-Inter-Regular-375.woff2") format("woff2"),
+    url("./V-inter-reg/V-Inter-Regular-375.woff") format("woff"),
+    url("./V-inter-reg/V-Inter-Regular-375.ttf") format("truetype"),
+    url("./V-inter-reg/V-Inter-Regular-375.svg") format("svg");
+  font-weight: normal; /* <== On définit le poids de la police */
+  font-style: normal; /* <== On définit le style de la police */
+  font-display: swap; /* <== On spécifie le comportement d'affichage de la police. Ca indique que le navigateur doit afficher une police de secours immédiatement, puis charger la police personnalisée en arrière-plan. */
+}
