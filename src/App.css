@@ -95,6 +95,45 @@ header .filter input:focus-visible {
   outline: 0;
 }
 
+header .filter > div {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+header .filter > div > span {
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+header .filter .sort {
+  display: flex;
+  align-items: center;
+  width: 50px;
+  padding: 2px 0;
+  border-radius: 15px;
+  background-color: #2cb1ba;
+}
+
+.sort.price-asc {
+  justify-content: flex-start;
+}
+
+.sort.price-desc {
+  justify-content: flex-end;
+}
+header .filter .sort span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 13px;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
 .disconnect-button {
   background-color: #c2175b;
   border-color: #c2175b;

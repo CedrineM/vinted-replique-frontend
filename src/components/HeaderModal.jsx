@@ -39,6 +39,28 @@ const HeaderModal = ({
             placeholder="Recherche des articles"
             value={objFiltres.title}
           />
+          <div>
+            <span>Trier par prix :</span>
+            <div
+              className={
+                objFiltres.sort === "price-asc"
+                  ? "sort price-asc"
+                  : "sort price-desc"
+              }
+            >
+              <span
+                onClick={() => {
+                  if (objFiltres.sort === "price-asc") {
+                    setObjFiltres({ ...objFiltres, sort: "price-desc" });
+                  } else {
+                    setObjFiltres({ ...objFiltres, sort: "price-asc" });
+                  }
+                }}
+              >
+                {objFiltres.sort === "price-asc" ? "↑" : "↓"}
+              </span>
+            </div>
+          </div>
         </div>
         {isConnected ? (
           <button

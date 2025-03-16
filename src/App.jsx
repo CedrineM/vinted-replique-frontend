@@ -22,7 +22,7 @@ const App = () => {
 
   // state filtres recherche
   const [objFiltres, setObjFiltres] = useState({
-    title: null,
+    title: "",
     priceMin: null,
     priceMax: null,
     sort: "price-asc",

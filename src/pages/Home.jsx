@@ -30,50 +30,56 @@ const Home = ({ data, setPages, pages }) => {
         <div className="container">
           <div className="pagination">
             <p>Total des offres : {data.count}</p>
-            <div>
-              <p>
-                Page : {pages} / {Math.ceil(data.count / 10)}
-              </p>
-              <nav>
-                <button
-                  disabled={pages === 1 && true}
-                  onClick={() => {
-                    pagination("previous");
-                  }}
-                >
-                  {"<"}
-                </button>
-                {buttonPagination().map((num) => {
-                  return (
-                    <button
-                      key={num}
-                      disabled={pages === num && true}
-                      onClick={() => {
-                        pagination(num);
-                      }}
-                    >
-                      {num}
-                    </button>
-                  );
-                })}
-                <button
-                  disabled={pages === Math.ceil(data.count / 10) && true}
-                  onClick={() => {
-                    pagination("next");
-                  }}
-                >
-                  {">"}
-                </button>
-              </nav>
-            </div>
+            {data.offers.length > 0 && (
+              <div>
+                <p>
+                  Page : {pages} / {Math.ceil(data.count / 10)}
+                </p>
+                <nav>
+                  <button
+                    disabled={pages === 1 && true}
+                    onClick={() => {
+                      pagination("previous");
+                    }}
+                  >
+                    {"<"}
+                  </button>
+                  {buttonPagination().map((num) => {
+                    return (
+                      <button
+                        key={num}
+                        disabled={pages === num && true}
+                        onClick={() => {
+                          pagination(num);
+                        }}
+                      >
+                        {num}
+                      </button>
+                    );
+                  })}
+                  <button
+                    disabled={pages === Math.ceil(data.count / 10) && true}
+                    onClick={() => {
+                      pagination("next");
+                    }}
+                  >
+                    {">"}
+                  </button>
+                </nav>
+              </div>
+            )}
           </div>
           <div className="offers">
-            {data.offers.map((productInfo) => {
-              // console.log(productInfo.owner);
-              return (
-                <Product key={productInfo._id} productInfo={productInfo} />
-              );
-            })}
+            {data.offers.length === 0 ? (
+              <p>Aucune offres ne correspond à votre recherche</p>
+            ) : (
+              data.offers.map((productInfo) => {
+                // console.log(productInfo.owner);
+                return (
+                  <Product key={productInfo._id} productInfo={productInfo} />
+                );
+              })
+            )}
           </div>
         </div>
       </main>
