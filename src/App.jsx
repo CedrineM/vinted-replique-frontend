@@ -8,12 +8,17 @@ import Home from "./pages/Home";
 import Offer from "./pages/Offer";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import HeaderModal from "./components/HeaderModal";
+import LoginModal from "./components/LoginModal";
+import SignupModal from "./components/SignupModal";
 
 const App = () => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isConnected, setIsConnected] = useState(false);
   const [pages, setPages] = useState(1);
+  // visibilité modal
+  const [visible, setVisible] = useState({ signup: false, login: false });
 
   const setConnect = (token) => {
     if (token) {
@@ -45,16 +50,43 @@ const App = () => {
     <div>en chargement</div>
   ) : (
     <Router>
-      <Header isConnected={isConnected} setConnect={setConnect} />
+      {/* <Header isConnected={isConnected} setConnect={setConnect} /> */}
+      <HeaderModal
+        isConnected={isConnected}
+        setConnect={setConnect}
+        setVisible={setVisible}
+        visible={visible}
+      />
       <Routes>
         <Route
           path="/"
-          element={<Home data={data} setPages={setPages} pages={pages} />}
+          element={
+            <Home
+              data={data}
+              setPages={setPages}
+              pages={pages}
+              visible={visible}
+            />
+          }
         />
         <Route path="/offers/:id" element={<Offer />} />
-        <Route path="/signup" element={<Signup setConnect={setConnect} />} />
-        <Route path="/login" element={<Login setConnect={setConnect} />} />
+        {/* <Route path="/signup" element={<Signup setConnect={setConnect} />} />
+        <Route path="/login" element={<Login setConnect={setConnect} />} /> */}
       </Routes>
+      {visible.login && (
+        <LoginModal
+          setConnect={setConnect}
+          visible={visible}
+          setVisible={setVisible}
+        />
+      )}
+      {visible.signup && (
+        <SignupModal
+          setConnect={setConnect}
+          visible={visible}
+          setVisible={setVisible}
+        />
+      )}
     </Router>
   );
 };

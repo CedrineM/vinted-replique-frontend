@@ -46,6 +46,7 @@ const Home = ({ data, setPages, pages }) => {
                 {buttonPagination().map((num) => {
                   return (
                     <button
+                      key={num}
                       disabled={pages === num && true}
                       onClick={() => {
                         pagination(num);
