@@ -20,6 +20,14 @@ const App = () => {
   // visibilité modal
   const [visible, setVisible] = useState({ signup: false, login: false });
 
+  // state filtres recherche
+  const [objFiltres, setObjFiltres] = useState({
+    title: null,
+    priceMin: null,
+    priceMax: null,
+    sort: "price-asc",
+  });
+
   const setConnect = (token) => {
     if (token) {
       Cookies.set("token", token);
@@ -33,9 +41,23 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/v2/offers?page=${pages}&limit=10`
-        );
+        let url = `https://lereacteur-vinted-api.herokuapp.com/v2/offers?page=${pages}&limit=10`;
+        if (objFiltres.title) {
+          url += `&title=${objFiltres.title}`;
+        }
+        if (objFiltres.priceMin && objFiltres.priceMax) {
+          url += `&priceMin=${objFiltres.priceMin}&priceMax=${objFiltres.priceMax}`;
+        } else if (!objFiltres.priceMin && objFiltres.priceMax) {
+          url += `&priceMax=${objFiltres.priceMax}`;
+        } else if (objFiltres.priceMin && !objFiltres.priceMax) {
+          url += `&priceMin=${objFiltres.priceMin}`;
+        }
+
+        if (objFiltres.sort) {
+          url += `&sort=${objFiltres.sort}`;
+        }
+
+        const response = await axios.get(url);
         // console.log(response.data);
         setData(response.data);
         setIsLoading(false);
@@ -44,7 +66,7 @@ const App = () => {
       }
     };
     fetchData();
-  }, [pages]);
+  }, [pages, objFiltres]);
 
   return isLoading ? (
     <div>en chargement</div>
@@ -56,6 +78,8 @@ const App = () => {
         setConnect={setConnect}
         setVisible={setVisible}
         visible={visible}
+        setObjFiltres={setObjFiltres}
+        objFiltres={objFiltres}
       />
       <Routes>
         <Route

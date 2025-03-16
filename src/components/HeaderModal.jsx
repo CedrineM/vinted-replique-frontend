@@ -2,7 +2,14 @@ import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import ButtonLink from "./ButtonLink";
 
-const HeaderModal = ({ isConnected, setConnect, setVisible, visible }) => {
+const HeaderModal = ({
+  isConnected,
+  setConnect,
+  setVisible,
+  visible,
+  setObjFiltres,
+  objFiltres,
+}) => {
   const handleModalOnclick = (action) => {
     if (action === "signup") {
       const copy = { ...visible };
@@ -14,6 +21,9 @@ const HeaderModal = ({ isConnected, setConnect, setVisible, visible }) => {
       setVisible(copy);
     }
   };
+  const handleChange = (event) => {
+    setObjFiltres({ ...objFiltres, [event.target.name]: event.target.value });
+  };
   return (
     <header>
       <div className="container">
@@ -21,7 +31,14 @@ const HeaderModal = ({ isConnected, setConnect, setVisible, visible }) => {
           <img src={logo} alt="Logo-vinted" />
         </Link>
         <div className="filter">
-          <input type="text" id="search" placeholder="Recherche des articles" />
+          <input
+            onChange={handleChange}
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Recherche des articles"
+            value={objFiltres.title}
+          />
         </div>
         {isConnected ? (
           <button

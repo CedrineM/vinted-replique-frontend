@@ -456,6 +456,7 @@ header .filter input:focus-visible {
   align-items: center;
   justify-content: center;
 }
+
 .signup-login-modal > div {
   position: relative;
   display: flex;
