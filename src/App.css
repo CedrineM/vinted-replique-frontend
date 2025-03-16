@@ -94,10 +94,12 @@ header .filter input:focus-visible {
 
 .disconnect-button {
   background-color: #c2175b;
+  border-color: #c2175b;
 }
 
 .disconnect-button:hover {
   background-color: #cc3d76;
+  border-color: #cc3d76;
 }
 .connection-button button {
   background-color: #ffffff;
@@ -154,9 +156,51 @@ header .filter input:focus-visible {
 --------------------------------------------------------------------------------- 
 -----------------------------------------------------------------------------*/
 .home .container {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.home .container .pagination {
+  display: flex;
+  justify-content: space-between;
+  text-align: right;
+}
+.pagination nav {
+  display: flex;
+  gap: 5px;
+  margin-top: 15px;
+}
+.pagination button {
+  width: 20px;
+  padding: 0;
+  border-radius: 50%;
+  box-shadow: none;
+}
+
+.pagination button:disabled {
+  cursor: inherit;
+  background-color: #16646a;
+  border: #16646a;
+}
+
+.pagination button:first-child,
+.pagination button:last-child {
+  background-color: #ffffff;
+  color: black;
+  border: none;
+  width: fit-content;
+  padding: 5px;
+}
+.pagination button:first-child:disabled,
+.pagination button:last-child:disabled {
+  opacity: 0;
+  cursor: inherit;
+}
+
+.home .container .offers {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  margin-bottom: 50px;
 }
 
 /* -------------------------------------------------
@@ -182,6 +226,11 @@ header .filter input:focus-visible {
   gap: 5px;
   margin-bottom: 5px;
 }
+
+.product > div:first-child span {
+  font-size: 13px;
+}
+
 .product > div:last-child {
   margin-top: 5px;
 }

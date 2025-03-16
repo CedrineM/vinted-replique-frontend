@@ -13,6 +13,7 @@ const App = () => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isConnected, setIsConnected] = useState(false);
+  const [pages, setPages] = useState(1);
 
   const setConnect = (token) => {
     if (token) {
@@ -28,7 +29,7 @@ const App = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/v2/offers"
+          `https://lereacteur-vinted-api.herokuapp.com/v2/offers?page=${pages}&limit=10`
         );
         // console.log(response.data);
         setData(response.data);
@@ -38,7 +39,7 @@ const App = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [pages]);
 
   return isLoading ? (
     <div>en chargement</div>
@@ -46,7 +47,10 @@ const App = () => {
     <Router>
       <Header isConnected={isConnected} setConnect={setConnect} />
       <Routes>
-        <Route path="/" element={<Home data={data} />} />
+        <Route
+          path="/"
+          element={<Home data={data} setPages={setPages} pages={pages} />}
+        />
         <Route path="/offers/:id" element={<Offer />} />
         <Route path="/signup" element={<Signup setConnect={setConnect} />} />
         <Route path="/login" element={<Login setConnect={setConnect} />} />
