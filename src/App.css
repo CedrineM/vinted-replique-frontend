@@ -42,9 +42,11 @@ button:hover {
   border-color: #32c3ce;
 }
 
-input::placeholder {
+input::placeholder,
+textarea::placeholder {
   opacity: 0.4;
 }
+
 a {
   font-weight: bold;
   text-decoration: none;
@@ -576,4 +578,103 @@ header .filter .sort span {
   font-size: 14px;
   color: #2cb1ba;
   cursor: pointer;
+}
+
+/*--------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+-----------------------------------------PUBLISH/MAIN-----------------------------------------------------
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------*/
+
+.publish {
+  background-color: #eaedee;
+  height: calc(100% - 100px);
+}
+
+.publish .container {
+  padding: 50px 0;
+}
+
+.publish form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.publish form > section {
+  background-color: #ffffff;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
+  gap: 20px;
+}
+.publish form > section div {
+  display: flex;
+  align-items: top;
+  justify-content: space-between;
+}
+.publish form > section input {
+  border: none;
+  max-width: 50%;
+  width: 100%;
+  border-bottom: 1px solid #cccccc;
+  outline: none;
+  padding: 10px 0;
+}
+
+.publish form > section input:focus-visible {
+  border-bottom: 1px solid #2cb1ba;
+}
+
+.publish form > section:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+}
+
+.publish form > section:first-child div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: #cccccc 1px dashed;
+}
+
+.publish form > section:first-child input {
+  width: fit-content;
+  border: none;
+}
+
+.publish form > section:nth-child(2) textarea {
+  border: none;
+  resize: none;
+  max-width: 50%;
+  width: 100%;
+  outline: none;
+  border-bottom: 1px solid #cccccc;
+}
+
+.publish form > section:nth-child(2) textarea:focus-visible {
+  border-bottom: 1px solid #2cb1ba;
+}
+
+.publish form > button {
+  align-self: flex-end;
+  margin-top: 15px;
+}
+
+.publish form .errorForm {
+  text-align: center;
+  color: red;
+}
+
+.publish form .error-input {
+  border-bottom: 1px solid red;
+}
+
+.publish form > section:first-child div.error-input {
+  border-color: red;
 }

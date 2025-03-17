@@ -3,14 +3,15 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Cookies from "js-cookie";
-import Header from "./components/Header";
+// import Header from "./components/Header";
 import Home from "./pages/Home";
 import Offer from "./pages/Offer";
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
+// import Signup from "./pages/Signup";
+// import Login from "./pages/Login";
 import HeaderModal from "./components/HeaderModal";
 import LoginModal from "./components/LoginModal";
 import SignupModal from "./components/SignupModal";
+import Publish from "./pages/Publish";
 
 const App = () => {
   const [data, setData] = useState(null);
@@ -94,6 +95,10 @@ const App = () => {
           }
         />
         <Route path="/offers/:id" element={<Offer />} />
+        <Route
+          path="/publish"
+          element={<Publish isConnected={isConnected} />}
+        />
         {/* <Route path="/signup" element={<Signup setConnect={setConnect} />} />
         <Route path="/login" element={<Login setConnect={setConnect} />} /> */}
       </Routes>

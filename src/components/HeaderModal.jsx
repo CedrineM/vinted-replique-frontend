@@ -90,7 +90,17 @@ const HeaderModal = ({
           </div>
         )}
 
-        <button>Vends tes articles</button>
+        {isConnected ? (
+          <ButtonLink to={"/publish"}>Vends tes articles</ButtonLink>
+        ) : (
+          <button
+            onClick={() => {
+              handleModalOnclick("login");
+            }}
+          >
+            Vends tes articles
+          </button>
+        )}
       </div>
     </header>
   );
