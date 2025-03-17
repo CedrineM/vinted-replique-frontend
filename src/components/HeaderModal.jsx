@@ -21,6 +21,12 @@ const HeaderModal = ({
       setVisible(copy);
     }
   };
+  if (visible.signup || visible.login) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "inherit";
+  }
+
   const handleChange = (event) => {
     setObjFiltres({ ...objFiltres, [event.target.name]: event.target.value });
   };
