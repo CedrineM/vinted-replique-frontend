@@ -16,7 +16,6 @@ const Publish = ({ isConnected }) => {
     picture: [],
   });
   const [errorMessage, setErrorMessage] = useState("");
-
   const handleChange = (event) => {
     setPublishData({
       ...publishData,
@@ -83,6 +82,7 @@ const Publish = ({ isConnected }) => {
               <input
                 multiple={true}
                 type="file"
+                accept="image/*"
                 name="picture"
                 id="picture"
                 onChange={handleFilesChange}

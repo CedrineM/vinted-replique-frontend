@@ -339,14 +339,34 @@ header .filter .sort span {
   justify-content: space-around;
 }
 
-.offer .container > div:first-child {
+.offer .container .offer-pictures {
   height: 600px;
-  width: 450px;
+  width: 500px;
   border-radius: 10px;
   overflow: hidden;
 }
 
-.offer .container > div:first-child img {
+.offer .container .offer-pictures > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 80%;
+}
+
+.offer .container .offer-pictures > div:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 20%;
+}
+
+.offer .container .offer-pictures > div:last-child > div {
+  width: calc(100% / 2);
+}
+
+.offer .container > div img {
   width: 100%;
   height: 100%;
   object-fit: cover;

@@ -38,8 +38,27 @@ const Offer = () => {
   ) : (
     <main className="offer">
       <div className="container">
-        <div>
-          <img src={product.product_image.secure_url} alt="" />
+        <div className="offer-pictures">
+          {product.product_pictures.length === 3 ? (
+            <>
+              <div>
+                <img src={product.product_image.secure_url} alt="" />
+              </div>
+              <div>
+                {product.product_pictures.map((picture, index) => {
+                  if (index !== 0 && index < 3) {
+                    return (
+                      <div key={picture.public_id}>
+                        <img src={picture.secure_url} alt="" />
+                      </div>
+                    );
+                  }
+                })}
+              </div>
+            </>
+          ) : (
+            <img src={product.product_image.secure_url} alt="" />
+          )}
         </div>
         <div>
           <h2>{product.product_price} €</h2>
@@ -55,8 +74,10 @@ const Offer = () => {
               <p>{product.product_details[0].MARQUE}</p>
               <p>{product.product_details[1].TAILLE}</p>
               <p>{product.product_details[2].ÉTAT}</p>
-              <p>{product.product_details[3].COULEUR}</p>{" "}
-              <p>{product.product_details[4].EMPLACEMENT}</p>
+              <p>{product.product_details[3].COULEUR}</p>
+              {product.product_details[4] && (
+                <p>{product.product_details[4].EMPLACEMENT}</p>
+              )}
               {product.product_details[5] && (
                 <p>{product.product_details[5]["MODES DE PAIEMENT"]}</p>
               )}
