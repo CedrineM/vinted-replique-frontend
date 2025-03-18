@@ -1,4 +1,5 @@
 import tear from "../assets/tear.svg";
+import ButtonLink from "./ButtonLink";
 
 const Hero = () => {
   return (
@@ -6,7 +7,7 @@ const Hero = () => {
       <div className="container">
         <div>
           <h1>Prêt à faire du tri dans vos placards ?</h1>
-          <button>Commencer à vendre</button>
+          <ButtonLink to={"/publish"}>Commencer à vendre</ButtonLink>
         </div>
       </div>
       <div className="tear">

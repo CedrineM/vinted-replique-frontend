@@ -12,6 +12,7 @@ import HeaderModal from "./components/HeaderModal";
 import LoginModal from "./components/LoginModal";
 import SignupModal from "./components/SignupModal";
 import Publish from "./pages/Publish";
+import Payment from "./pages/Payment";
 
 const App = () => {
   const [data, setData] = useState(null);
@@ -98,6 +99,10 @@ const App = () => {
         <Route
           path="/publish"
           element={<Publish isConnected={isConnected} />}
+        />
+        <Route
+          path="/payment"
+          element={<Payment isConnected={isConnected} />}
         />
         {/* <Route path="/signup" element={<Signup setConnect={setConnect} />} />
         <Route path="/login" element={<Login setConnect={setConnect} />} /> */}

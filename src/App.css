@@ -318,7 +318,7 @@ header .filter .sort span {
 
 .offer {
   background-color: #eaedee;
-  height: calc(100vh - 65px);
+  height: calc(100vh - 100px);
   display: flex;
   align-items: center;
 }
@@ -677,4 +677,65 @@ header .filter .sort span {
 
 .publish form > section:first-child div.error-input {
   border-color: red;
+}
+
+/*--------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+-----------------------------------------PAYMENT/MAIN-----------------------------------------------------
+----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------*/
+
+.payment {
+  background-color: #eaedee;
+  height: calc(100% - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment .container {
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.resume-payment {
+  background-color: #ffffff;
+  width: 600px;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.resume-payment > section {
+  margin-bottom: 20px;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  border-bottom: #cccccc 1px solid;
+}
+
+.resume-payment > section > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.resume-payment > section:nth-child(2) > div {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 20px 0;
+}
+
+.resume-payment > section:nth-child(2) p {
+  line-height: 25px;
+}
+
+.resume-payment > section:nth-child(2) p span {
+  font-weight: bold;
+}
+
+.resume-payment button {
+  width: 100%;
+  margin-top: 15px;
 }
