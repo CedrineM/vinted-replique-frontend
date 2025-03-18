@@ -1,5 +1,5 @@
 import logo from "../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ButtonLink from "./ButtonLink";
 
 const HeaderModal = ({
@@ -19,17 +19,26 @@ const HeaderModal = ({
       const copy = { ...visible };
       copy.login = !copy.login;
       setVisible(copy);
+    } else if (action === "publish") {
+      const copy = { ...visible };
+      copy.from = "/publish";
+      copy.login = !copy.login;
+      setVisible(copy);
     }
   };
+
   if (visible.signup || visible.login) {
     document.body.style.overflow = "hidden";
   } else {
     document.body.style.overflow = "inherit";
   }
-
   const handleChange = (event) => {
     setObjFiltres({ ...objFiltres, [event.target.name]: event.target.value });
   };
+
+  const location = useLocation();
+  const { pathname } = location;
+
   return (
     <header>
       <div className="container">
@@ -45,28 +54,54 @@ const HeaderModal = ({
             placeholder="Recherche des articles"
             value={objFiltres.title}
           />
-          <div>
-            <span>Trier par prix :</span>
-            <div
-              className={
-                objFiltres.sort === "price-asc"
-                  ? "sort price-asc"
-                  : "sort price-desc"
-              }
-            >
-              <span
-                onClick={() => {
-                  if (objFiltres.sort === "price-asc") {
-                    setObjFiltres({ ...objFiltres, sort: "price-desc" });
-                  } else {
-                    setObjFiltres({ ...objFiltres, sort: "price-asc" });
+          {pathname === "/" && (
+            <div className="price-filter">
+              <div>
+                <span>Trier par prix :</span>
+                <div
+                  className={
+                    objFiltres.sort === "price-asc"
+                      ? "sort price-asc"
+                      : "sort price-desc"
                   }
-                }}
-              >
-                {objFiltres.sort === "price-asc" ? "↑" : "↓"}
-              </span>
+                >
+                  <span
+                    onClick={() => {
+                      if (objFiltres.sort === "price-asc") {
+                        setObjFiltres({ ...objFiltres, sort: "price-desc" });
+                      } else {
+                        setObjFiltres({ ...objFiltres, sort: "price-asc" });
+                      }
+                    }}
+                  >
+                    {objFiltres.sort === "price-asc" ? "↑" : "↓"}
+                  </span>
+                </div>
+              </div>
+              <div>
+                <label htmlFor="priceMin">Prix minimum : </label>
+                <input
+                  min={0}
+                  type="number"
+                  name="priceMin"
+                  id="priceMin"
+                  value={objFiltres.priceMin}
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <label htmlFor="priceMax">Prix maximum : </label>
+                <input
+                  min={0}
+                  type="number"
+                  name="priceMax"
+                  id="priceMax"
+                  value={objFiltres.priceMax}
+                  onChange={handleChange}
+                />
+              </div>
             </div>
-          </div>
+          )}
         </div>
         {isConnected ? (
           <button
@@ -101,7 +136,7 @@ const HeaderModal = ({
         ) : (
           <button
             onClick={() => {
-              handleModalOnclick("login");
+              handleModalOnclick("publish");
             }}
           >
             Vends tes articles

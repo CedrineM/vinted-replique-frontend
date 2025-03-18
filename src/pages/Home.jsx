@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Hero from "../components/Hero";
 import Product from "../components/Product";
 
-const Home = ({ data, setPages, pages }) => {
+const Home = ({ data, setPages, pages, isConnected, visible, setVisible }) => {
   //   console.log(data.offers);
   const pagination = (page) => {
     if (page === "next") {
@@ -24,7 +24,11 @@ const Home = ({ data, setPages, pages }) => {
 
   return (
     <>
-      <Hero />
+      <Hero
+        isConnected={isConnected}
+        visible={visible}
+        setVisible={setVisible}
+      />
 
       <main className="home">
         <div className="container">

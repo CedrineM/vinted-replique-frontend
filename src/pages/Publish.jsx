@@ -26,10 +26,11 @@ const Publish = ({ isConnected }) => {
 
   const handleFilesChange = (event) => {
     const copy = { ...publishData };
-    for (let i = 0; i < event.target.files.length; i++) {
-      copy.picture.push(event.target.files[i]);
-    }
+    // for (let i = 0; i < event.target.files.length; i++) {
+    //   copy.picture.push(event.target.files[i]);
+    //       }
     // copy.picture = event.target.files[0]
+    copy.picture = event.target.files;
     setPublishData(copy);
   };
 
@@ -78,6 +79,7 @@ const Publish = ({ isConnected }) => {
         <form onSubmit={handleSubmit}>
           <section>
             <div className={errorMessage && "error-input"}>
+              <label htmlFor="picture">+ Ajouter des photos</label>
               <input
                 multiple={true}
                 type="file"
@@ -89,7 +91,7 @@ const Publish = ({ isConnected }) => {
           </section>
           <section>
             <div>
-              <label for="title">Titre</label>
+              <label htmlFor="title">Titre</label>
               <input
                 className={errorMessage && "error-input"}
                 onChange={handleChange}
@@ -101,7 +103,7 @@ const Publish = ({ isConnected }) => {
               />
             </div>
             <div>
-              <label for="description">Description</label>
+              <label htmlFor="description">Description</label>
               <textarea
                 onChange={handleChange}
                 type="text"
@@ -115,7 +117,7 @@ const Publish = ({ isConnected }) => {
           </section>
           <section>
             <div>
-              <label for="brand">Marque</label>
+              <label htmlFor="brand">Marque</label>
               <input
                 onChange={handleChange}
                 type="text"
@@ -126,7 +128,7 @@ const Publish = ({ isConnected }) => {
               />
             </div>
             <div>
-              <label for="size">Taille</label>
+              <label htmlFor="size">Taille</label>
               <input
                 onChange={handleChange}
                 type="text"
@@ -137,7 +139,7 @@ const Publish = ({ isConnected }) => {
               />
             </div>
             <div>
-              <label for="color">Couleur</label>
+              <label htmlFor="color">Couleur</label>
               <input
                 onChange={handleChange}
                 type="text"
@@ -148,7 +150,7 @@ const Publish = ({ isConnected }) => {
               />
             </div>
             <div>
-              <label for="condition">Etat</label>
+              <label htmlFor="condition">Etat</label>
               <input
                 onChange={handleChange}
                 type="text"
@@ -159,7 +161,7 @@ const Publish = ({ isConnected }) => {
               />
             </div>
             <div>
-              <label for="city">Lieu</label>
+              <label htmlFor="city">Lieu</label>
               <input
                 onChange={handleChange}
                 type="text"
@@ -172,7 +174,7 @@ const Publish = ({ isConnected }) => {
           </section>
           <section>
             <div>
-              <label for="price">Prix</label>
+              <label htmlFor="price">Prix</label>
               <input
                 className={errorMessage && "error-input"}
                 onChange={handleChange}

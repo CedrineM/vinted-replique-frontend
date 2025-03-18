@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginModal = ({ setConnect, visible, setVisible }) => {
   const [formData, setFormData] = useState({
@@ -7,10 +8,11 @@ const LoginModal = ({ setConnect, visible, setVisible }) => {
     password: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
-
+  const navigate = useNavigate();
   const closeOnclick = () => {
     const copy = { ...visible };
     copy.login = false;
+    copy.from = null;
     setVisible(copy);
   };
   const handleChange = (event) => {
@@ -32,6 +34,10 @@ const LoginModal = ({ setConnect, visible, setVisible }) => {
           email: "",
           password: "",
         });
+        if (visible.from) {
+          closeOnclick();
+          return navigate(visible.from);
+        }
         closeOnclick();
       }
     } catch (error) {

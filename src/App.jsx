@@ -20,7 +20,11 @@ const App = () => {
   const [isConnected, setIsConnected] = useState(false);
   const [pages, setPages] = useState(1);
   // visibilité modal
-  const [visible, setVisible] = useState({ signup: false, login: false });
+  const [visible, setVisible] = useState({
+    signup: false,
+    login: false,
+    from: null,
+  });
 
   // state filtres recherche
   const [objFiltres, setObjFiltres] = useState({
@@ -92,6 +96,8 @@ const App = () => {
               setPages={setPages}
               pages={pages}
               visible={visible}
+              isConnected={isConnected}
+              setVisible={setVisible}
             />
           }
         />

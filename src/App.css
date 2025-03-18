@@ -35,6 +35,7 @@ button {
   font-weight: 300;
   box-shadow: 3px 3px 10px rgba(44, 176, 186, 0.295);
   cursor: pointer;
+  font-weight: bold;
 }
 
 button:hover {
@@ -96,14 +97,24 @@ header .filter input {
 header .filter input:focus-visible {
   outline: 0;
 }
+header .filter > .price-filter {
+  display: flex;
+  gap: 15px;
+}
 
-header .filter > div {
+header .filter > .price-filter input {
+  width: 70px;
+  margin-left: 5px;
+}
+
+header .filter > .price-filter > div {
   display: flex;
   align-items: center;
   margin-top: 15px;
 }
 
-header .filter > div > span {
+header .filter > .price-filter span,
+header .filter > .price-filter label {
   font-size: 12px;
   margin-right: 5px;
 }
@@ -149,7 +160,6 @@ header .filter .sort span {
   background-color: #ffffff;
   border: #2cb1ba solid 2px;
   color: #2cb1ba;
-  font-weight: bold;
 }
 
 .connection-button button:hover {
@@ -318,7 +328,7 @@ header .filter .sort span {
 
 .offer {
   background-color: #eaedee;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 65px);
   display: flex;
   align-items: center;
 }
@@ -588,7 +598,7 @@ header .filter .sort span {
 
 .publish {
   background-color: #eaedee;
-  height: calc(100% - 100px);
+  height: calc(100% - 65px);
 }
 
 .publish .container {
@@ -644,8 +654,21 @@ header .filter .sort span {
 }
 
 .publish form > section:first-child input {
-  width: fit-content;
-  border: none;
+  display: none;
+}
+
+.publish form > section:first-child label {
+  background-color: #2cb1ba;
+  width: 200px;
+  text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 20px;
+  border-radius: 15px;
+}
+.publish form > section:first-child label:hover {
+  background-color: #32c3ce;
+  border-color: #32c3ce;
 }
 
 .publish form > section:nth-child(2) textarea {
@@ -687,7 +710,7 @@ header .filter .sort span {
 
 .payment {
   background-color: #eaedee;
-  height: calc(100% - 100px);
+  height: calc(100% - 65px);
   display: flex;
   align-items: center;
   justify-content: center;
