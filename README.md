@@ -1,12 +1,54 @@
-# React + Vite
+# Vinted Frontend 🛍️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Description
 
-Currently, two official plugins are available:
+Clone de l'interface utilisateur de Vinted développé avec React et Vite. Ce projet frontend permet aux utilisateurs de parcourir, acheter et vendre des vêtements d'occasion.
+Réaliser au cours de ma formation au Reacteur
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Technologies utilisées
 
-## Expanding the ESLint configuration
+- React
+- Vite
+- Axio
+- react-router-dom
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📦 Installation
+
+```bash
+# Cloner le dépôt
+git clone [URL_DU_REPO]
+
+# Accéder au répertoire
+cd vinted-frontend
+
+# Installer les dépendances
+npm install
+
+# Lancer le serveur de développement
+npm run dev
+```
+
+## 🔧 Fonctionnalités
+
+- ✅ Navigation entre les différentes pages
+- ✅ Affichage des articles disponibles
+- ✅ Filtrage et recherche
+- ✅ Pages de détail des produits
+- ✅ Interface utilisateur responsive
+
+## 🧩 Structure du projet
+
+```
+src/
+│── assets/
+│── components/
+│── pages/
+│── services/
+│── styles/
+│── App.jsx
+│── main.jsx
+```
+
+## ✍️ Auteurs
+
+[@CedrineM](https://github.com/CedrineM)
